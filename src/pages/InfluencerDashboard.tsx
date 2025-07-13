@@ -5,12 +5,37 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Video, Upload, DollarSign, Eye, Heart, Instagram } from "lucide-react";
+import { ArrowLeft, Video, Upload, DollarSign, Eye, Heart, Instagram, BarChart3, TrendingUp, Users, Calendar } from "lucide-react";
 import { toast } from "sonner";
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer, BarChart, Bar, PieChart, Pie, Cell } from "recharts";
 
 const InfluencerDashboard = () => {
   const navigate = useNavigate();
   const [isInstagramConnected, setIsInstagramConnected] = useState(false);
+
+  // Analytics data
+  const performanceData = [
+    { month: "Jan", views: 12000, earnings: 450, engagement: 5.2 },
+    { month: "Feb", views: 15000, earnings: 620, engagement: 6.1 },
+    { month: "Mar", views: 18000, earnings: 890, engagement: 7.3 },
+    { month: "Apr", views: 22000, earnings: 1150, engagement: 8.2 },
+    { month: "May", views: 25000, earnings: 1420, engagement: 9.1 },
+    { month: "Jun", views: 28000, earnings: 1650, engagement: 9.8 },
+  ];
+
+  const engagementData = [
+    { name: "Likes", value: 65, color: "#8884d8" },
+    { name: "Comments", value: 20, color: "#82ca9d" },
+    { name: "Shares", value: 15, color: "#ffc658" },
+  ];
+
+  const topPerformingContent = [
+    { title: "Tech Review: Gaming Setup", views: 45000, earnings: 180, engagement: 12.5 },
+    { title: "Fashion Haul: Summer Trends", views: 38000, earnings: 165, engagement: 11.2 },
+    { title: "Skincare Routine Tutorial", views: 32000, earnings: 145, engagement: 10.8 },
+    { title: "Fitness Gear Recommendations", views: 28000, earnings: 120, engagement: 9.5 },
+  ];
 
   const mockVideos = [
     { id: 1, title: "Tech Review: Gaming Headphones", views: 15420, likes: 1240, earnings: 85.50, status: "Live" },
@@ -47,8 +72,9 @@ const InfluencerDashboard = () => {
         </div>
 
         <Tabs defaultValue="overview" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-4">
+          <TabsList className="grid w-full grid-cols-5">
             <TabsTrigger value="overview">Overview</TabsTrigger>
+            <TabsTrigger value="analytics">Analytics</TabsTrigger>
             <TabsTrigger value="content">Content</TabsTrigger>
             <TabsTrigger value="campaigns">Campaigns</TabsTrigger>
             <TabsTrigger value="profile">Profile</TabsTrigger>
@@ -108,6 +134,162 @@ const InfluencerDashboard = () => {
                 <div className="h-64 bg-gradient-to-r from-pink-100 to-purple-100 rounded-lg flex items-center justify-center">
                   <p className="text-gray-600">📈 Performance chart coming soon</p>
                 </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="analytics" className="space-y-6">
+            <div className="flex items-center gap-2 mb-6">
+              <BarChart3 className="w-6 h-6 text-pink-500" />
+              <h2 className="text-2xl font-bold">Analytics Dashboard</h2>
+            </div>
+
+            {/* Performance Metrics */}
+            <div className="grid md:grid-cols-3 gap-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <TrendingUp className="w-5 h-5 text-green-500" />
+                    Monthly Growth
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-3xl font-bold text-green-600">+24.5%</div>
+                  <p className="text-sm text-gray-600">Views increased this month</p>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Users className="w-5 h-5 text-blue-500" />
+                    Avg. Engagement Rate
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-3xl font-bold text-blue-600">8.7%</div>
+                  <p className="text-sm text-gray-600">Above industry average</p>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Calendar className="w-5 h-5 text-purple-500" />
+                    Best Posting Time
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-3xl font-bold text-purple-600">7-9 PM</div>
+                  <p className="text-sm text-gray-600">Peak audience activity</p>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Performance Chart */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Performance Trends</CardTitle>
+                <CardDescription>Views, earnings, and engagement over time</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ChartContainer config={{
+                  views: { label: "Views", color: "#8884d8" },
+                  earnings: { label: "Earnings ($)", color: "#82ca9d" },
+                  engagement: { label: "Engagement (%)", color: "#ffc658" }
+                }} className="h-80">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <LineChart data={performanceData}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="month" />
+                      <YAxis />
+                      <ChartTooltip content={<ChartTooltipContent />} />
+                      <Line type="monotone" dataKey="views" stroke="#8884d8" strokeWidth={2} />
+                      <Line type="monotone" dataKey="earnings" stroke="#82ca9d" strokeWidth={2} />
+                      <Line type="monotone" dataKey="engagement" stroke="#ffc658" strokeWidth={2} />
+                    </LineChart>
+                  </ResponsiveContainer>
+                </ChartContainer>
+              </CardContent>
+            </Card>
+
+            {/* Engagement Breakdown */}
+            <div className="grid md:grid-cols-2 gap-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Engagement Breakdown</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ChartContainer config={{
+                    likes: { label: "Likes", color: "#8884d8" },
+                    comments: { label: "Comments", color: "#82ca9d" },
+                    shares: { label: "Shares", color: "#ffc658" }
+                  }} className="h-64">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <PieChart>
+                        <Pie
+                          data={engagementData}
+                          cx="50%"
+                          cy="50%"
+                          labelLine={false}
+                          outerRadius={80}
+                          fill="#8884d8"
+                          dataKey="value"
+                          label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+                        >
+                          {engagementData.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={entry.color} />
+                          ))}
+                        </Pie>
+                        <ChartTooltip content={<ChartTooltipContent />} />
+                      </PieChart>
+                    </ResponsiveContainer>
+                  </ChartContainer>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle>Top Performing Content</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    {topPerformingContent.map((content, index) => (
+                      <div key={index} className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                        <div className="flex-1">
+                          <p className="font-medium text-sm">{content.title}</p>
+                          <div className="flex gap-4 mt-1 text-xs text-gray-600">
+                            <span>{content.views.toLocaleString()} views</span>
+                            <span>${content.earnings}</span>
+                            <span>{content.engagement}% engagement</span>
+                          </div>
+                        </div>
+                        <Badge className="ml-2">#{index + 1}</Badge>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Revenue Analytics */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Revenue Analytics</CardTitle>
+                <CardDescription>Monthly earnings breakdown</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ChartContainer config={{
+                  earnings: { label: "Earnings ($)", color: "#82ca9d" }
+                }} className="h-64">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart data={performanceData}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="month" />
+                      <YAxis />
+                      <ChartTooltip content={<ChartTooltipContent />} />
+                      <Bar dataKey="earnings" fill="#82ca9d" />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </ChartContainer>
               </CardContent>
             </Card>
           </TabsContent>
