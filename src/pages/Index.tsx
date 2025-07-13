@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useNavigate } from "react-router-dom";
-import { Store, Users, Video, BarChart3, MessageCircle, Smartphone, Zap, TrendingUp } from "lucide-react";
+import { Video, MessageCircle, Zap, TrendingUp, BarChart3, Smartphone } from "lucide-react";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -27,66 +27,30 @@ const Index = () => {
                 TikTok-Style Feed
               </Badge>
               <Badge variant="secondary" className="text-lg px-4 py-2">
-                <Store className="w-4 h-4 mr-2" />
-                Shopify Integration
+                <Smartphone className="w-4 h-4 mr-2" />
+                Instagram-Like Experience
               </Badge>
               <Badge variant="secondary" className="text-lg px-4 py-2">
                 <MessageCircle className="w-4 h-4 mr-2" />
                 Real-time Chat
               </Badge>
             </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button 
+                onClick={() => navigate('/auth')} 
+                className="bg-white text-purple-900 hover:bg-gray-100 text-lg px-8 py-3"
+              >
+                Get Started
+              </Button>
+              <Button 
+                onClick={() => navigate('/auth')} 
+                variant="outline" 
+                className="border-white text-white hover:bg-white/10 text-lg px-8 py-3"
+              >
+                Sign In
+              </Button>
+            </div>
           </div>
-        </div>
-      </div>
-
-      {/* Role Selection */}
-      <div className="container mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold text-center text-white mb-12">Choose Your Role</h2>
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105">
-            <CardHeader className="text-center">
-              <Store className="w-16 h-16 mx-auto text-orange-300 mb-4" />
-              <CardTitle className="text-white text-2xl">Vendor</CardTitle>
-              <CardDescription className="text-gray-200">
-                Connect your Shopify store, manage campaigns, and partner with influencers
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Button onClick={() => navigate('/vendor')} className="w-full bg-orange-500 hover:bg-orange-600">
-                Vendor Dashboard
-              </Button>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105">
-            <CardHeader className="text-center">
-              <Users className="w-16 h-16 mx-auto text-pink-300 mb-4" />
-              <CardTitle className="text-white text-2xl">Influencer</CardTitle>
-              <CardDescription className="text-gray-200">
-                Create engaging content, earn commissions, and grow your audience
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Button onClick={() => navigate('/influencer')} className="w-full bg-pink-500 hover:bg-pink-600">
-                Creator Studio
-              </Button>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105">
-            <CardHeader className="text-center">
-              <Smartphone className="w-16 h-16 mx-auto text-purple-300 mb-4" />
-              <CardTitle className="text-white text-2xl">Consumer</CardTitle>
-              <CardDescription className="text-gray-200">
-                Discover products through engaging videos and shop seamlessly
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Button onClick={() => navigate('/consumer')} className="w-full bg-purple-500 hover:bg-purple-600">
-                Start Shopping
-              </Button>
-            </CardContent>
-          </Card>
         </div>
       </div>
 
@@ -96,24 +60,66 @@ const Index = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           <div className="text-center text-white">
             <Zap className="w-12 h-12 mx-auto text-yellow-300 mb-4" />
-            <h3 className="text-xl font-semibold mb-2">Real-time Sync</h3>
-            <p className="opacity-80">Instant Shopify integration with live inventory updates</p>
+            <h3 className="text-xl font-semibold mb-2">Universal Feed</h3>
+            <p className="opacity-80">Instagram-style experience with role-based features</p>
           </div>
           <div className="text-center text-white">
             <TrendingUp className="w-12 h-12 mx-auto text-green-300 mb-4" />
-            <h3 className="text-xl font-semibold mb-2">AI Recommendations</h3>
-            <p className="opacity-80">Smart content discovery powered by machine learning</p>
+            <h3 className="text-xl font-semibold mb-2">Digital Wallets</h3>
+            <p className="opacity-80">Integrated wallet system for all user roles</p>
           </div>
           <div className="text-center text-white">
             <MessageCircle className="w-12 h-12 mx-auto text-blue-300 mb-4" />
-            <h3 className="text-xl font-semibold mb-2">Live Chat</h3>
-            <p className="opacity-80">Connect vendors, creators, and customers instantly</p>
+            <h3 className="text-xl font-semibold mb-2">Role Selection</h3>
+            <p className="opacity-80">Switch between vendor, influencer, and consumer roles</p>
           </div>
           <div className="text-center text-white">
             <BarChart3 className="w-12 h-12 mx-auto text-red-300 mb-4" />
-            <h3 className="text-xl font-semibold mb-2">Analytics</h3>
-            <p className="opacity-80">Track performance and optimize your campaigns</p>
+            <h3 className="text-xl font-semibold mb-2">Social Commerce</h3>
+            <p className="opacity-80">Seamless shopping experience through video content</p>
           </div>
+        </div>
+      </div>
+
+      {/* How It Works */}
+      <div className="container mx-auto px-4 py-16">
+        <h2 className="text-3xl font-bold text-center text-white mb-12">How It Works</h2>
+        <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <Card className="bg-white/10 backdrop-blur-sm border-white/20">
+            <CardHeader className="text-center">
+              <div className="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-xl font-bold">
+                1
+              </div>
+              <CardTitle className="text-white">Sign Up</CardTitle>
+              <CardDescription className="text-gray-200">
+                Create your account and access the universal feed
+              </CardDescription>
+            </CardHeader>
+          </Card>
+
+          <Card className="bg-white/10 backdrop-blur-sm border-white/20">
+            <CardHeader className="text-center">
+              <div className="w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-xl font-bold">
+                2
+              </div>
+              <CardTitle className="text-white">Choose Role</CardTitle>
+              <CardDescription className="text-gray-200">
+                Select your role as vendor, influencer, or consumer
+              </CardDescription>
+            </CardHeader>
+          </Card>
+
+          <Card className="bg-white/10 backdrop-blur-sm border-white/20">
+            <CardHeader className="text-center">
+              <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-xl font-bold">
+                3
+              </div>
+              <CardTitle className="text-white">Start Earning</CardTitle>
+              <CardDescription className="text-gray-200">
+                Create content, sell products, or discover amazing deals
+              </CardDescription>
+            </CardHeader>
+          </Card>
         </div>
       </div>
 

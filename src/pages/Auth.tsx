@@ -6,35 +6,23 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Mail, Lock, User, Store, Instagram } from "lucide-react";
+import { ArrowLeft, Mail, Lock, User, Instagram } from "lucide-react";
 import { toast } from "sonner";
 
 const Auth = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleAuth = async (type: string, role: string) => {
+  const handleAuth = async (type: string) => {
     setIsLoading(true);
     
     // Simulate authentication
     setTimeout(() => {
       setIsLoading(false);
-      toast.success(`${type} successful!`);
+      toast.success(`${type} successful! Welcome to Reelit!`);
       
-      // Redirect based on role
-      switch (role) {
-        case "vendor":
-          navigate("/vendor");
-          break;
-        case "influencer":
-          navigate("/influencer");
-          break;
-        case "consumer":
-          navigate("/consumer");
-          break;
-        default:
-          navigate("/");
-      }
+      // Redirect to main app feed
+      navigate("/app");
     }, 1500);
   };
 
@@ -79,47 +67,13 @@ const Auth = () => {
                   </div>
                 </div>
                 
-                <div className="space-y-3">
-                  <Button 
-                    onClick={() => handleAuth("Login", "consumer")} 
-                    disabled={isLoading}
-                    className="w-full bg-white text-purple-900 hover:bg-gray-100"
-                  >
-                    {isLoading ? "Signing In..." : "Sign In"}
-                  </Button>
-                  
-                  <div className="text-center text-white text-sm">or choose your role</div>
-                  
-                  <div className="grid grid-cols-3 gap-2">
-                    <Button 
-                      onClick={() => handleAuth("Login", "vendor")} 
-                      variant="outline" 
-                      size="sm"
-                      className="border-white/30 text-white hover:bg-white/10"
-                    >
-                      <Store className="w-4 h-4 mr-1" />
-                      Vendor
-                    </Button>
-                    <Button 
-                      onClick={() => handleAuth("Login", "influencer")} 
-                      variant="outline" 
-                      size="sm"
-                      className="border-white/30 text-white hover:bg-white/10"
-                    >
-                      <User className="w-4 h-4 mr-1" />
-                      Creator
-                    </Button>
-                    <Button 
-                      onClick={() => handleAuth("Login", "consumer")} 
-                      variant="outline" 
-                      size="sm"
-                      className="border-white/30 text-white hover:bg-white/10"
-                    >
-                      <Mail className="w-4 h-4 mr-1" />
-                      Shop
-                    </Button>
-                  </div>
-                </div>
+                <Button 
+                  onClick={() => handleAuth("Login")} 
+                  disabled={isLoading}
+                  className="w-full bg-white text-purple-900 hover:bg-gray-100"
+                >
+                  {isLoading ? "Signing In..." : "Sign In"}
+                </Button>
               </TabsContent>
 
               <TabsContent value="register" className="space-y-4">
@@ -146,7 +100,7 @@ const Auth = () => {
                 </div>
                 
                 <Button 
-                  onClick={() => handleAuth("Registration", "consumer")} 
+                  onClick={() => handleAuth("Registration")} 
                   disabled={isLoading}
                   className="w-full bg-white text-purple-900 hover:bg-gray-100"
                 >
