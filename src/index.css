@@ -1,99 +1,110 @@
+/* Instagram-like Mobile Design System */
+@import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700&family=SF+Pro+Text:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
+/* Instagram Color System - All colors MUST be HSL */
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Instagram Brand Colors */
+    --instagram-bg: 0 0% 100%;
+    --instagram-text: 0 0% 15%;
+    --instagram-gray: 0 0% 38%;
+    --instagram-light-gray: 0 0% 96%;
+    --instagram-border: 0 0% 87%;
+    --instagram-blue: 214 100% 59%;
+    --instagram-like: 0 100% 64%;
+    
+    /* Core Design System */
+    --background: var(--instagram-bg);
+    --foreground: var(--instagram-text);
+    --card: var(--instagram-bg);
+    --card-foreground: var(--instagram-text);
+    --popover: var(--instagram-bg);
+    --popover-foreground: var(--instagram-text);
+    --primary: var(--instagram-blue);
+    --primary-foreground: 0 0% 100%;
+    --secondary: var(--instagram-light-gray);
+    --secondary-foreground: var(--instagram-text);
+    --muted: var(--instagram-light-gray);
+    --muted-foreground: var(--instagram-gray);
+    --accent: var(--instagram-blue);
+    --accent-foreground: 0 0% 100%;
+    --destructive: var(--instagram-like);
+    --destructive-foreground: 0 0% 100%;
+    --border: var(--instagram-border);
+    --input: var(--instagram-border);
+    --ring: var(--instagram-blue);
+    
+    /* Instagram Spacing System */
+    --instagram-spacing-xs: 4px;
+    --instagram-spacing-sm: 8px;
+    --instagram-spacing-md: 12px;
+    --instagram-spacing-lg: 16px;
+    --instagram-spacing-xl: 24px;
+    
+    /* Instagram Font Sizes (Mobile) */
+    --instagram-text-xs: 10px;
+    --instagram-text-sm: 12px;
+    --instagram-text-base: 14px;
+    --instagram-text-lg: 16px;
+    --instagram-text-xl: 18px;
+    --instagram-text-2xl: 24px;
+    
+    --radius: 8px;
+    --sidebar-background: var(--instagram-bg);
+    --sidebar-foreground: var(--instagram-text);
+    --sidebar-primary: var(--instagram-blue);
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: var(--instagram-light-gray);
+    --sidebar-accent-foreground: var(--instagram-text);
+    --sidebar-border: var(--instagram-border);
+    --sidebar-ring: var(--instagram-blue);
   }
 
+  /* Instagram Dark Mode */
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --instagram-bg: 0 0% 0%;
+    --instagram-text: 0 0% 100%;
+    --instagram-gray: 0 0% 65%;
+    --instagram-light-gray: 0 0% 6%;
+    --instagram-border: 0 0% 15%;
+    --instagram-blue: 214 100% 59%;
+    --instagram-like: 0 100% 64%;
+    
+    --background: var(--instagram-bg);
+    --foreground: var(--instagram-text);
+    --card: var(--instagram-light-gray);
+    --card-foreground: var(--instagram-text);
+    --popover: var(--instagram-light-gray);
+    --popover-foreground: var(--instagram-text);
+    --primary: var(--instagram-blue);
+    --primary-foreground: 0 0% 100%;
+    --secondary: var(--instagram-light-gray);
+    --secondary-foreground: var(--instagram-text);
+    --muted: var(--instagram-light-gray);
+    --muted-foreground: var(--instagram-gray);
+    --accent: var(--instagram-blue);
+    --accent-foreground: 0 0% 100%;
+    --destructive: var(--instagram-like);
+    --destructive-foreground: 0 0% 100%;
+    --border: var(--instagram-border);
+    --input: var(--instagram-border);
+    --ring: var(--instagram-blue);
+    --sidebar-background: var(--instagram-bg);
+    --sidebar-foreground: var(--instagram-text);
+    --sidebar-primary: var(--instagram-blue);
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: var(--instagram-light-gray);
+    --sidebar-accent-foreground: var(--instagram-text);
+    --sidebar-border: var(--instagram-border);
+    --sidebar-ring: var(--instagram-blue);
   }
 }
 
+/* Instagram Base Styles */
 @layer base {
   * {
     @apply border-border;
@@ -101,5 +112,145 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px; /* Instagram base font size */
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Instagram Typography Classes */
+  .instagram-heading {
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 600;
+  }
+
+  .instagram-body {
+    font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 400;
+  }
+
+  .instagram-caption {
+    font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .instagram-username {
+    font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .instagram-timestamp {
+    font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    color: hsl(var(--muted-foreground));
+  }
+
+  /* Mobile-first responsive design */
+  html {
+    overflow-x: hidden;
+  }
+
+  body {
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Instagram-like smooth scrolling */
+  * {
+    scroll-behavior: smooth;
+  }
+
+  /* Hide scrollbars but keep functionality */
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Instagram Component Styles */
+@layer components {
+  /* Instagram Story Ring */
+  .story-ring {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    padding: 2px;
+    border-radius: 50%;
+  }
+
+  /* Instagram Like Animation */
+  .like-animation {
+    animation: like-bounce 0.3s ease-in-out;
+  }
+
+  @keyframes like-bounce {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+
+  /* Instagram Card Hover */
+  .instagram-card {
+    transition: all 0.2s ease-in-out;
+  }
+
+  .instagram-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Instagram Button Styles */
+  .instagram-btn-primary {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 8px 16px;
+    border: none;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .instagram-btn-primary:hover {
+    background: hsl(var(--primary) / 0.9);
+    transform: translateY(-1px);
+  }
+
+  .instagram-btn-secondary {
+    background: hsl(var(--secondary));
+    color: hsl(var(--secondary-foreground));
+    border: 1px solid hsl(var(--border));
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 8px 16px;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .instagram-btn-secondary:hover {
+    background: hsl(var(--muted));
+  }
+
+  /* Instagram Input Styles */
+  .instagram-input {
+    background: hsl(var(--background));
+    border: 1px solid hsl(var(--border));
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 14px;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .instagram-input:focus {
+    border-color: hsl(var(--primary));
+    outline: none;
+    box-shadow: 0 0 0 2px hsl(var(--primary) / 0.1);
   }
 }

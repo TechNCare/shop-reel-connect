@@ -12,12 +12,40 @@ export default {
 	theme: {
 		container: {
 			center: true,
-			padding: '2rem',
+			padding: '1rem', // Instagram mobile padding
 			screens: {
+				'sm': '640px',
+				'md': '768px',
+				'lg': '1024px',
+				'xl': '1280px',
 				'2xl': '1400px'
 			}
 		},
 		extend: {
+			// Instagram-specific spacing system
+			spacing: {
+				'instagram-xs': 'var(--instagram-spacing-xs)',
+				'instagram-sm': 'var(--instagram-spacing-sm)',
+				'instagram-md': 'var(--instagram-spacing-md)',
+				'instagram-lg': 'var(--instagram-spacing-lg)',
+				'instagram-xl': 'var(--instagram-spacing-xl)',
+				'safe-bottom': 'env(safe-area-inset-bottom)',
+				'safe-top': 'env(safe-area-inset-top)',
+			},
+			// Instagram font sizes
+			fontSize: {
+				'instagram-xs': ['var(--instagram-text-xs)', { lineHeight: '1.4' }],
+				'instagram-sm': ['var(--instagram-text-sm)', { lineHeight: '1.4' }],
+				'instagram-base': ['var(--instagram-text-base)', { lineHeight: '1.5' }],
+				'instagram-lg': ['var(--instagram-text-lg)', { lineHeight: '1.5' }],
+				'instagram-xl': ['var(--instagram-text-xl)', { lineHeight: '1.4' }],
+				'instagram-2xl': ['var(--instagram-text-2xl)', { lineHeight: '1.3' }],
+			},
+			// Instagram-like font families
+			fontFamily: {
+				'instagram-heading': ['SF Pro Display', 'system-ui', 'sans-serif'],
+				'instagram-body': ['SF Pro Text', 'system-ui', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -68,27 +96,42 @@ export default {
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
 			},
+			// Instagram-like animations
 			keyframes: {
 				'accordion-down': {
-					from: {
-						height: '0'
-					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
-					}
+					from: { height: '0' },
+					to: { height: 'var(--radix-accordion-content-height)' }
 				},
 				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
-					},
-					to: {
-						height: '0'
-					}
+					from: { height: 'var(--radix-accordion-content-height)' },
+					to: { height: '0' }
+				},
+				// Instagram-specific animations
+				'fade-in-up': {
+					'0%': { opacity: '0', transform: 'translateY(10px)' },
+					'100%': { opacity: '1', transform: 'translateY(0)' }
+				},
+				'scale-in': {
+					'0%': { opacity: '0', transform: 'scale(0.9)' },
+					'100%': { opacity: '1', transform: 'scale(1)' }
+				},
+				'slide-up': {
+					'0%': { transform: 'translateY(100%)' },
+					'100%': { transform: 'translateY(0)' }
+				},
+				'pulse-like': {
+					'0%': { transform: 'scale(1)' },
+					'50%': { transform: 'scale(1.05)' },
+					'100%': { transform: 'scale(1)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in-up': 'fade-in-up 0.3s ease-out',
+				'scale-in': 'scale-in 0.2s ease-out',
+				'slide-up': 'slide-up 0.3s ease-out',
+				'pulse-like': 'pulse-like 0.6s ease-in-out infinite',
 			}
 		}
 	},
