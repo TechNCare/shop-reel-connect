@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -10,47 +9,113 @@ import { Settings, User, Store, Video, Heart, Eye, ShoppingBag, TrendingUp, Cale
 import { toast } from "sonner";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer, BarChart, Bar, PieChart, Pie, Cell } from "recharts";
-
 const Profile = () => {
   const navigate = useNavigate();
   const [activeRole, setActiveRole] = useState<'consumer' | 'influencer' | 'vendor'>('consumer');
 
   // Consumer Analytics Data
-  const purchaseHistory = [
-    { month: "Jan", purchases: 3, spent: 245, savings: 35 },
-    { month: "Feb", purchases: 5, spent: 420, savings: 65 },
-    { month: "Mar", purchases: 4, spent: 380, savings: 45 },
-    { month: "Apr", purchases: 6, spent: 520, savings: 78 },
-    { month: "May", purchases: 7, spent: 650, savings: 95 },
-    { month: "Jun", purchases: 5, spent: 480, savings: 72 },
-  ];
-
-  const categorySpending = [
-    { name: "Fashion", value: 45, color: "#8884d8", amount: 890 },
-    { name: "Tech", value: 25, color: "#82ca9d", amount: 520 },
-    { name: "Beauty", value: 20, color: "#ffc658", amount: 410 },
-    { name: "Fitness", value: 10, color: "#ff7c7c", amount: 185 },
-  ];
-
-  const recentPurchases = [
-    { product: "Wireless Headphones", price: 199.99, influencer: "@techguru", date: "2 days ago", category: "Tech" },
-    { product: "Summer Dress", price: 89.99, influencer: "@fashionista", date: "1 week ago", category: "Fashion" },
-    { product: "Skincare Set", price: 149.99, influencer: "@beautyexpert", date: "2 weeks ago", category: "Beauty" },
-    { product: "Yoga Mat", price: 45.99, influencer: "@fitnessjoe", date: "3 weeks ago", category: "Fitness" },
-  ];
-
-  const watchingHabits = [
-    { category: "Tech Reviews", hours: 12, percentage: 35 },
-    { category: "Fashion", hours: 8, percentage: 25 },
-    { category: "Beauty", hours: 6, percentage: 20 },
-    { category: "Lifestyle", hours: 4, percentage: 12 },
-    { category: "Fitness", hours: 3, percentage: 8 },
-  ];
-
+  const purchaseHistory = [{
+    month: "Jan",
+    purchases: 3,
+    spent: 245,
+    savings: 35
+  }, {
+    month: "Feb",
+    purchases: 5,
+    spent: 420,
+    savings: 65
+  }, {
+    month: "Mar",
+    purchases: 4,
+    spent: 380,
+    savings: 45
+  }, {
+    month: "Apr",
+    purchases: 6,
+    spent: 520,
+    savings: 78
+  }, {
+    month: "May",
+    purchases: 7,
+    spent: 650,
+    savings: 95
+  }, {
+    month: "Jun",
+    purchases: 5,
+    spent: 480,
+    savings: 72
+  }];
+  const categorySpending = [{
+    name: "Fashion",
+    value: 45,
+    color: "#8884d8",
+    amount: 890
+  }, {
+    name: "Tech",
+    value: 25,
+    color: "#82ca9d",
+    amount: 520
+  }, {
+    name: "Beauty",
+    value: 20,
+    color: "#ffc658",
+    amount: 410
+  }, {
+    name: "Fitness",
+    value: 10,
+    color: "#ff7c7c",
+    amount: 185
+  }];
+  const recentPurchases = [{
+    product: "Wireless Headphones",
+    price: 199.99,
+    influencer: "@techguru",
+    date: "2 days ago",
+    category: "Tech"
+  }, {
+    product: "Summer Dress",
+    price: 89.99,
+    influencer: "@fashionista",
+    date: "1 week ago",
+    category: "Fashion"
+  }, {
+    product: "Skincare Set",
+    price: 149.99,
+    influencer: "@beautyexpert",
+    date: "2 weeks ago",
+    category: "Beauty"
+  }, {
+    product: "Yoga Mat",
+    price: 45.99,
+    influencer: "@fitnessjoe",
+    date: "3 weeks ago",
+    category: "Fitness"
+  }];
+  const watchingHabits = [{
+    category: "Tech Reviews",
+    hours: 12,
+    percentage: 35
+  }, {
+    category: "Fashion",
+    hours: 8,
+    percentage: 25
+  }, {
+    category: "Beauty",
+    hours: 6,
+    percentage: 20
+  }, {
+    category: "Lifestyle",
+    hours: 4,
+    percentage: 12
+  }, {
+    category: "Fitness",
+    hours: 3,
+    percentage: 8
+  }];
   const handleRoleChange = (role: 'consumer' | 'influencer' | 'vendor') => {
     setActiveRole(role);
     toast.success(`Switched to ${role} mode`);
-    
+
     // Navigate to role-specific dashboard
     if (role === 'vendor') {
       navigate('/vendor');
@@ -58,9 +123,7 @@ const Profile = () => {
       navigate('/influencer');
     }
   };
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50">
+  return <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50">
       <div className="container mx-auto px-4 py-8">
         {/* Profile Header */}
         <div className="flex items-center justify-between mb-8">
@@ -72,14 +135,14 @@ const Profile = () => {
               </AvatarFallback>
             </Avatar>
             <div>
-              <h1 className="text-3xl font-bold">John Doe</h1>
+              <h1 className="text-3xl font-bold text-emerald-300">John Doe</h1>
               <p className="text-gray-600">john.doe@example.com</p>
               <Badge className="mt-2 bg-blue-100 text-blue-800">
                 {activeRole.charAt(0).toUpperCase() + activeRole.slice(1)}
               </Badge>
             </div>
           </div>
-          <Button variant="outline" onClick={() => navigate('/app/profile')}>
+          <Button variant="outline" onClick={() => navigate('/app/profile')} className="px-0 py-0 mx-0 my-0">
             <Settings className="w-4 h-4 mr-2" />
             Settings
           </Button>
@@ -146,8 +209,7 @@ const Profile = () => {
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  {recentPurchases.map((purchase, index) => (
-                    <div key={index} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                  {recentPurchases.map((purchase, index) => <div key={index} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
                       <div className="flex-1">
                         <div className="flex items-center gap-2">
                           <h4 className="font-medium">{purchase.product}</h4>
@@ -162,8 +224,7 @@ const Profile = () => {
                       <div className="text-right">
                         <p className="font-semibold">${purchase.price}</p>
                       </div>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
               </CardContent>
             </Card>
@@ -183,10 +244,19 @@ const Profile = () => {
               </CardHeader>
               <CardContent>
                 <ChartContainer config={{
-                  purchases: { label: "Purchases", color: "#8884d8" },
-                  spent: { label: "Amount Spent ($)", color: "#82ca9d" },
-                  savings: { label: "Savings ($)", color: "#ffc658" }
-                }} className="h-80">
+                purchases: {
+                  label: "Purchases",
+                  color: "#8884d8"
+                },
+                spent: {
+                  label: "Amount Spent ($)",
+                  color: "#82ca9d"
+                },
+                savings: {
+                  label: "Savings ($)",
+                  color: "#ffc658"
+                }
+              }} className="h-80">
                   <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={purchaseHistory}>
                       <CartesianGrid strokeDasharray="3 3" />
@@ -210,26 +280,30 @@ const Profile = () => {
                 </CardHeader>
                 <CardContent>
                   <ChartContainer config={{
-                    fashion: { label: "Fashion", color: "#8884d8" },
-                    tech: { label: "Tech", color: "#82ca9d" },
-                    beauty: { label: "Beauty", color: "#ffc658" },
-                    fitness: { label: "Fitness", color: "#ff7c7c" }
-                  }} className="h-64">
+                  fashion: {
+                    label: "Fashion",
+                    color: "#8884d8"
+                  },
+                  tech: {
+                    label: "Tech",
+                    color: "#82ca9d"
+                  },
+                  beauty: {
+                    label: "Beauty",
+                    color: "#ffc658"
+                  },
+                  fitness: {
+                    label: "Fitness",
+                    color: "#ff7c7c"
+                  }
+                }} className="h-64">
                     <ResponsiveContainer width="100%" height="100%">
                       <PieChart>
-                        <Pie
-                          data={categorySpending}
-                          cx="50%"
-                          cy="50%"
-                          labelLine={false}
-                          outerRadius={80}
-                          fill="#8884d8"
-                          dataKey="value"
-                          label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
-                        >
-                          {categorySpending.map((entry, index) => (
-                            <Cell key={`cell-${index}`} fill={entry.color} />
-                          ))}
+                        <Pie data={categorySpending} cx="50%" cy="50%" labelLine={false} outerRadius={80} fill="#8884d8" dataKey="value" label={({
+                        name,
+                        percent
+                      }) => `${name}: ${(percent * 100).toFixed(0)}%`}>
+                          {categorySpending.map((entry, index) => <Cell key={`cell-${index}`} fill={entry.color} />)}
                         </Pie>
                         <ChartTooltip content={<ChartTooltipContent />} />
                       </PieChart>
@@ -245,20 +319,17 @@ const Profile = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
-                    {watchingHabits.map((habit, index) => (
-                      <div key={index} className="space-y-2">
+                    {watchingHabits.map((habit, index) => <div key={index} className="space-y-2">
                         <div className="flex justify-between text-sm">
                           <span>{habit.category}</span>
                           <span>{habit.hours}h ({habit.percentage}%)</span>
                         </div>
                         <div className="w-full bg-gray-200 rounded-full h-2">
-                          <div 
-                            className="bg-blue-500 h-2 rounded-full transition-all duration-300"
-                            style={{ width: `${habit.percentage}%` }}
-                          />
+                          <div className="bg-blue-500 h-2 rounded-full transition-all duration-300" style={{
+                        width: `${habit.percentage}%`
+                      }} />
                         </div>
-                      </div>
-                    ))}
+                      </div>)}
                   </div>
                 </CardContent>
               </Card>
@@ -272,18 +343,19 @@ const Profile = () => {
               </CardHeader>
               <CardContent>
                 <div className="grid md:grid-cols-2 gap-6">
-                  {categorySpending.map((category, index) => (
-                    <div key={index} className="p-4 border rounded-lg">
+                  {categorySpending.map((category, index) => <div key={index} className="p-4 border rounded-lg">
                       <div className="flex items-center justify-between mb-2">
                         <h4 className="font-medium">{category.name}</h4>
-                        <Badge style={{ backgroundColor: category.color, color: 'white' }}>
+                        <Badge style={{
+                      backgroundColor: category.color,
+                      color: 'white'
+                    }}>
                           {category.value}%
                         </Badge>
                       </div>
                       <p className="text-2xl font-bold">${category.amount}</p>
                       <p className="text-sm text-gray-600">Total spent in this category</p>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
               </CardContent>
             </Card>
@@ -347,11 +419,7 @@ const Profile = () => {
                       <User className="w-12 h-12 mx-auto mb-4 text-blue-500" />
                       <h3 className="font-semibold mb-2">Consumer</h3>
                       <p className="text-sm text-gray-600 mb-4">Browse and purchase products from influencer recommendations</p>
-                      <Button 
-                        onClick={() => handleRoleChange('consumer')}
-                        variant={activeRole === 'consumer' ? 'default' : 'outline'}
-                        className="w-full"
-                      >
+                      <Button onClick={() => handleRoleChange('consumer')} variant={activeRole === 'consumer' ? 'default' : 'outline'} className="w-full">
                         {activeRole === 'consumer' ? 'Active' : 'Switch to Consumer'}
                       </Button>
                     </CardContent>
@@ -362,11 +430,7 @@ const Profile = () => {
                       <Video className="w-12 h-12 mx-auto mb-4 text-pink-500" />
                       <h3 className="font-semibold mb-2">Influencer</h3>
                       <p className="text-sm text-gray-600 mb-4">Create content and earn commissions from product promotions</p>
-                      <Button 
-                        onClick={() => handleRoleChange('influencer')}
-                        variant={activeRole === 'influencer' ? 'default' : 'outline'}
-                        className="w-full"
-                      >
+                      <Button onClick={() => handleRoleChange('influencer')} variant={activeRole === 'influencer' ? 'default' : 'outline'} className="w-full">
                         {activeRole === 'influencer' ? 'Active' : 'Switch to Influencer'}
                       </Button>
                     </CardContent>
@@ -377,11 +441,7 @@ const Profile = () => {
                       <Store className="w-12 h-12 mx-auto mb-4 text-orange-500" />
                       <h3 className="font-semibold mb-2">Vendor</h3>
                       <p className="text-sm text-gray-600 mb-4">Manage products and create marketing campaigns</p>
-                      <Button 
-                        onClick={() => handleRoleChange('vendor')}
-                        variant={activeRole === 'vendor' ? 'default' : 'outline'}
-                        className="w-full"
-                      >
+                      <Button onClick={() => handleRoleChange('vendor')} variant={activeRole === 'vendor' ? 'default' : 'outline'} className="w-full">
                         {activeRole === 'vendor' ? 'Active' : 'Switch to Vendor'}
                       </Button>
                     </CardContent>
@@ -401,8 +461,6 @@ const Profile = () => {
           </TabsContent>
         </Tabs>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default Profile;
