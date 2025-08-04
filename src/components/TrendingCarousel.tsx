@@ -94,13 +94,12 @@ const TrendingCarousel = () => {
           return (
             <Button
               key={category.id}
-              variant={activeCategory === category.id ? "default" : "outline"}
               size="sm"
               onClick={() => setActiveCategory(category.id)}
-              className={`flex items-center gap-1 rounded-full transition-all ${
+              className={`flex items-center gap-1 rounded-full transition-all instagram-btn-primary font-semibold ${
                 activeCategory === category.id
-                  ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg"
-                  : "bg-white/80 hover:bg-white"
+                  ? "bg-primary text-primary-foreground shadow-lg"
+                  : "bg-background text-foreground border border-border hover:bg-muted"
               }`}
             >
               <Icon className="w-3 h-3" />
